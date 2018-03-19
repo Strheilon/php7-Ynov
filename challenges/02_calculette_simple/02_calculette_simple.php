@@ -27,5 +27,5 @@ if(is_numeric($argv[1]) == true && is_numeric($argv[3]) == true){
             break;
     }
 } else {
-    die( "Impossible de calculer. \n");
+    die ( "Impossible de calculer. \n");
 }
