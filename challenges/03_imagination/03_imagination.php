@@ -30,5 +30,5 @@ if ($argv[1] == $quiche_lorraine){
             break;
     }
 } else {
-    print "\nCe que vous demander n'est pas disponible.\n";
+    print "\nCe que vous demandez n'est pas disponible.\n";
 }
