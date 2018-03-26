@@ -75,19 +75,31 @@
                                     <li class="page-item"><a class="page-link" href="classement.php?type=popularity&id=<?=  $_GET['id'] -1 ?>">&laquo;</a></li>
                                     <li class="page-item"><a class="page-link" href="classement.php?type=popularity&id=<?=  $_GET['id'] -1 ?>"><?=  $_GET['id'] -1 ?></a></li>
                                 <?php endif; ?>
-                                <?php if($_GET['id'] > 2): ?>
+                                <?php if($_GET['id'] == 3): ?>
                                     <li class="page-item"><a class="page-link" href="classement.php?type=popularity&id=<?=  $_GET['id'] -1 ?>">&laquo;</a></li>
-                                    <li class="page-item"><a class="page-link" href="classement.php?type=popularity&id=<?=  $_GET['id'] -2 ?>"><?=  $_GET['id']-2 ?></a></li>
+                                    <li class="page-item"><a class="page-link" href="classement.php?type=popularity&id=<?=  $_GET['id'] -2 ?>"><?=  $_GET['id'] -2 ?></a></li>
+                                    <li class="page-item"><a class="page-link" href="classement.php?type=popularity&id=<?=  $_GET['id'] -1 ?>"><?=  $_GET['id'] -1 ?></a></li>
+                                <?php endif; ?>
+                                <?php if($_GET['id'] > 3): ?>
+                                    <li class="page-item"><a class="page-link" href="classement.php?type=popularity&id=<?=  $_GET['id'] -1 ?>">&laquo;</a></li>
+                                    <li class="page-item"><a class="page-link" href="classement.php?type=popularity&id=<?=  $_GET['id'] -3 ?>"><?=  $_GET['id'] -3 ?></a></li>
+                                    <li class="page-item"><a class="page-link" href="classement.php?type=popularity&id=<?=  $_GET['id'] -2 ?>"><?=  $_GET['id'] -2 ?></a></li>
                                     <li class="page-item"><a class="page-link" href="classement.php?type=popularity&id=<?=  $_GET['id'] -1 ?>"><?=  $_GET['id'] -1 ?></a></li>
                                 <?php endif; ?>
                                     <li class="page-item active"><a class="page-link" href="classement.php?type=popularity&id=<?=  $_GET['id']?>"><?=  $_GET['id']  ?></a></li>
+                                <?php if($_GET['id'] == $length-2): ?>
+                                    <li class="page-item"><a class="page-link" href="classement.php?type=popularity&id=<?=  $_GET['id'] +1 ?>"><?=  $_GET['id'] +1 ?></a></li>
+                                    <li class="page-item"><a class="page-link" href="classement.php?type=popularity&id=<?=  $_GET['id'] +2 ?>"><?=  $_GET['id'] +2 ?></a></li>
+                                    <li class="page-item"><a class="page-link" href="classement.php?type=popularity&id=<?= $_GET['id'] +1 ?>">&raquo;</a></li>
+                                <?php endif; ?>
                                 <?php if($_GET['id'] == $length-1): ?>
                                     <li class="page-item"><a class="page-link" href="classement.php?type=popularity&id=<?=  $_GET['id'] +1 ?>"><?=  $_GET['id']+1 ?></a></li>
                                     <li class="page-item"><a class="page-link" href="classement.php?type=popularity&id=<?= $_GET['id'] +1 ?>">&raquo;</a></li>
                                 <?php endif; ?>
-                                <?php if($_GET['id'] < $length-1): ?>
+                                <?php if($_GET['id'] < $length-2): ?>
                                     <li class="page-item"><a class="page-link" href="classement.php?type=popularity&id=<?=  $_GET['id'] +1 ?>"><?=  $_GET['id']+1 ?></a></li>
                                     <li class="page-item"><a class="page-link" href="classement.php?type=popularity&id=<?=  $_GET['id'] +2 ?>"><?=  $_GET['id'] +2 ?></a></li>
+                                    <li class="page-item"><a class="page-link" href="classement.php?type=popularity&id=<?=  $_GET['id'] +3 ?>"><?=  $_GET['id'] +3 ?></a></li>
                                     <li class="page-item"><a class="page-link" href="classement.php?type=popularity&id=<?= $_GET['id'] +1 ?>">&raquo;</a></li>
                                 <?php endif; ?>
                                 <li class="page-item"><a class="page-link" href="classement.php?type=popularity&id=<?= $length ?>">&raquo;&raquo;</a></li>
@@ -98,20 +110,32 @@
                                     <li class="page-item"><a class="page-link" href="classement.php?type=rating&id=<?=  $_GET['id'] -1 ?>">&laquo;</a></li>
                                     <li class="page-item"><a class="page-link" href="classement.php?type=rating&id=<?=  $_GET['id'] -1 ?>"><?=  $_GET['id'] -1 ?></a></li>
                                 <?php endif; ?>
-                                <?php if($_GET['id'] > 2): ?>
+                                <?php if($_GET['id'] == 3): ?>
                                     <li class="page-item"><a class="page-link" href="classement.php?type=rating&id=<?=  $_GET['id'] -1 ?>">&laquo;</a></li>
-                                    <li class="page-item"><a class="page-link" href="classement.php?type=rating&id=<?=  $_GET['id'] -2 ?>"><?=  $_GET['id']-2 ?></a></li>
+                                    <li class="page-item"><a class="page-link" href="classement.php?type=rating&id=<?=  $_GET['id'] -2 ?>"><?=  $_GET['id'] -2 ?></a></li>
+                                    <li class="page-item"><a class="page-link" href="classement.php?type=rating&id=<?=  $_GET['id'] -1 ?>"><?=  $_GET['id'] -1 ?></a></li>
+                                <?php endif; ?>
+                                <?php if($_GET['id'] > 3): ?>
+                                    <li class="page-item"><a class="page-link" href="classement.php?type=rating&id=<?=  $_GET['id'] -1 ?>">&laquo;</a></li>
+                                    <li class="page-item"><a class="page-link" href="classement.php?type=rating&id=<?=  $_GET['id'] -3 ?>"><?=  $_GET['id'] -3 ?></a></li>
+                                    <li class="page-item"><a class="page-link" href="classement.php?type=rating&id=<?=  $_GET['id'] -2 ?>"><?=  $_GET['id'] -2 ?></a></li>
                                     <li class="page-item"><a class="page-link" href="classement.php?type=rating&id=<?=  $_GET['id'] -1 ?>"><?=  $_GET['id'] -1 ?></a></li>
                                 <?php endif; ?>
                                     <li class="page-item active"><a class="page-link" href="classement.php?type=rating&id=<?=  $_GET['id']?>"><?=  $_GET['id']  ?></a></li>
+                                <?php if($_GET['id'] == $length-2): ?>
+                                    <li class="page-item"><a class="page-link" href="classement.php?type=rating&id=<?=  $_GET['id'] +1 ?>"><?=  $_GET['id'] +1 ?></a></li>
+                                    <li class="page-item"><a class="page-link" href="classement.php?type=rating&id=<?=  $_GET['id'] +2 ?>"><?=  $_GET['id'] +2 ?></a></li>
+                                    <li class="page-item"><a class="page-link" href="classement.php?type=rating&id=<?= $_GET['id'] +1 ?>">&raquo;</a></li>
+                                <?php endif; ?>
                                 <?php if($_GET['id'] == $length-1): ?>
                                     <li class="page-item"><a class="page-link" href="classement.php?type=rating&id=<?=  $_GET['id'] +1 ?>"><?=  $_GET['id']+1 ?></a></li>
                                     <li class="page-item"><a class="page-link" href="classement.php?type=rating&id=<?= $_GET['id'] +1 ?>">&raquo;</a></li>
                                 <?php endif; ?>
-                                <?php if($_GET['id'] < $length-1): ?>
+                                <?php if($_GET['id'] < $length-2): ?>
                                     <li class="page-item"><a class="page-link" href="classement.php?type=rating&id=<?=  $_GET['id'] +1 ?>"><?=  $_GET['id']+1 ?></a></li>
                                     <li class="page-item"><a class="page-link" href="classement.php?type=rating&id=<?=  $_GET['id'] +2 ?>"><?=  $_GET['id'] +2 ?></a></li>
-                                    <li class="page-item"><a class="page-link" href="classement.php?type=rating&id=<?= $_GET['id'] +1 ?>">&raquo;</a></li>
+                                    <li class="page-item"><a class="page-link" href="classement.php?type=rating&id=<?=  $_GET['id'] +3 ?>"><?=  $_GET['id'] +3 ?></a></li>
+                                    <li class="page-item"><a class="page-link" href="classement.php?type=v&id=<?= $_GET['id'] +1 ?>">&raquo;</a></li>
                                 <?php endif; ?>
                                 <li class="page-item"><a class="page-link" href="classement.php?type=rating&id=<?= $length ?>">&raquo;&raquo;</a></li>
                             <?php endif; ?>
