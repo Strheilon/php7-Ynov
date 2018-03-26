@@ -14,6 +14,7 @@
     $top1r = 0;
     $top2r = 0;
     $top3r = 0;
+
 //top 1
     foreach ($shows as $value) {
         //randome
@@ -45,91 +46,116 @@
        }
     }
     //top 1 ra
-        foreach ($shows as $valeur) {
-            //aficher page des films
-            if(!empty($_GET['slug'])){
-                if($valeur['slug'] == $_GET['slug']){
-                    $serie = $valeur;
-                }
-            }
-            if($valeur["statistics"]["rating"] > $top1r){
-                $top1r = $valeur["statistics"]["rating"];
+    foreach ($shows as $valeur) {
+        //aficher page des films
+        if(!empty($_GET['slug'])){
+            if($valeur['slug'] == $_GET['slug']){
+                $serie = $valeur;
             }
         }
-        //top 2
-        foreach ($shows as $valeur) {
-                if ($valeur["statistics"]["rating"] > $top2r){
-                    if($valeur["statistics"]["rating"] < $top1r){
-                        $top2r =  $valeur["statistics"]["rating"];
-                    }
-               }
+        if($valeur["statistics"]["rating"] > $top1r){
+            $top1r = $valeur["statistics"]["rating"];
         }
-        //top 3
-        foreach ($shows as $valeur) {
-            if ($valeur["statistics"]["rating"] > $top3r){
-                if($valeur["statistics"]["rating"] < $top2r){
-                    $top3r =  $valeur["statistics"]["rating"];
-                }
-           }
+    }
+    //top 2
+    foreach ($shows as $valeur) {
+        if ($valeur["statistics"]["rating"] > $top2r){
+            if($valeur["statistics"]["rating"] < $top1r){
+                $top2r =  $valeur["statistics"]["rating"];
+            }
         }
+    }
+    //top 3
+    foreach ($shows as $valeur) {
+        if ($valeur["statistics"]["rating"] > $top3r){
+            if($valeur["statistics"]["rating"] < $top2r){
+                $top3r =  $valeur["statistics"]["rating"];
+            }
+        }
+    }
     //random
     $image = $series[$randomShow]["images"]['banner'];
     $random = $series[$randomShow]["slug"];
     $length = count($series)/10;
 
     //classement
-if(!empty($_GET['type'])){
-if('popularity' == $_GET['type']){
-    foreach ($series as $value) {
-        //var_dump($value);
-        array_push($classement, $value["statistics"]["popularity"]);
-
-    }
-} else if('rating' == $_GET['type']){
-    foreach ($series as $value) {
-        //var_dump($value);
-        array_push($classement, $value["statistics"]["rating"]);
-    }
-}
-arsort($classement);
-foreach ($classement as $id) {
-    foreach ($series as $value) {
-        if($id == $value["statistics"]["popularity"]){
-            /*for ($i=1; $i <count($series) ; $i++) {
-                array_push($value, array('class' => $i));
-            }*/
-            array_push($table, $value);
+    if(!empty($_GET['type'])){
+        if('popularity' == $_GET['type']){
+            foreach ($series as $value) {
+                array_push($classement, $value["statistics"]["popularity"]);
+            }
+        } else if('rating' == $_GET['type']){
+            foreach ($series as $value) {
+                array_push($classement, $value["statistics"]["rating"]);
+            }
         }
-        if($id == $value["statistics"]["rating"]){
-            /*for ($i=1; $i <count($series) ; $i++) {
-                array_push($value, array('class' => $i));
-            }*/
-            array_push($table, $value);
+    }
+
+    arsort($classement);
+
+    foreach ($classement as $id) {
+        foreach ($series as $value) {
+            if($id == $value["statistics"]["popularity"]){
+                array_push($table, $value);
+            }
+            if($id == $value["statistics"]["rating"]){
+                array_push($table, $value);
+            }
+
         }
-
     }
-}
-}
 
-//changer de page
-if(!empty($_GET['id'])){
-    $page = $_GET['id'];
-    $p = $page*10;
-    $more = $page+1;
-    $less = $page-1;
-    if($page == 1){
-        $page = 0;
-    }else{
-        $page = ($page-1)*10;
+
+    //changer de page
+    if (!empty($_GET['id'])) {
+        $page = $_GET['id'];
+        $p = $page*10;
+        $more = $page+1;
+        $less = $page-1;
+        if ($page == 1){
+            $page = 0;
+        } else {
+            $page = ($page-1)*10;
+        }
+        for ($i=$page; $i < $p; $i++) {
+            array_push($class, $i);
+            array_push($display, $table[$i]);
+        }
     }
-    for ($i=$page; $i < $p; $i++) {
-        //$classe= array("class" => $i);
-        array_push($class, $i);
-        array_push($display, $table[$i]);
+
+    // on veut déterminer quel menu est actif
+    $phpScript = basename($_SERVER['SCRIPT_NAME']);
+
+    $activeMenu = null;
+    switch ($phpScript) {
+        case 'index.php':
+            $activeMenu = 'accueil';
+            break;
+        case 'classement.php?type=popularity&id=1':
+            $activeMenu = 'classement';
+            break;
+        case 'serie.php':
+            $activeMenu = 'aleatoire';
+            break;
     }
-}
 
-
+    $menus = [
+        'accueil' => [
+            'href' => 'index.php',
+            'label' => 'Accueil',
+            'icon' => 'fa-home',
+        ],
+        'classement' => [
+            'href' => 'classement.php',
+            'label' => 'Classement',
+            'icon' => 'fa-trophy',
+        ],
+        'aleatoire' => [
+            'href' => 'serie_aleatoire.php',
+            'label' => 'Une série aléatoire',
+            'icon' => 'fa-random',
+        ],
+    ];
 
 
 
